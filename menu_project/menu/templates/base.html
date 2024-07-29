@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Example</title>
+</head>
+<body>
+{% load menu_tags %}
+
+<!-- Вызов template tag для отрисовки меню -->
+<nav>
+    {% draw_menu 'main_menu' %}
+</nav>
+
+<!-- Основное содержимое страницы -->
+<div id="content">
+    {% block content %}
+    <!-- Содержимое будет вставлено здесь в дочерних шаблонах -->
+    {% endblock %}
+</div>
+
+<!-- Остальная часть вашего HTML-кода -->
+</body>
+</html>

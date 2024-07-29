@@ -1,0 +1,29 @@
+{% if menu_tree %}
+<ul>
+    {% for item, children in menu_tree %}
+    <li class="{% if item == active_item %}active{% endif %}">
+        <a href="{{ item.get_absolute_url }}">{{ item.name }}</a>
+        {% if children %}
+        <ul>
+            {% for child, grand_children in children %}
+            <li class="{% if child == active_item %}active{% endif %}">
+                <a href="{{ child.get_absolute_url }}">{{ child.name }}</a>
+                {% if grand_children %}
+                <ul>
+                    {% for grand_child, _ in grand_children %}
+                    <li class="{% if grand_child == active_item %}active{% endif %}">
+                        <a href="{{ grand_child.get_absolute_url }}">{{ grand_child.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Menu not found.</p>
+{% endif %}
